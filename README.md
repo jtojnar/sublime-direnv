@@ -1,41 +1,29 @@
 # Sublime-direnv
 
-[sublime-gulp](https://github.com/NicoSantangelo/sublime-gulp), [sublime-vagrant](https://github.com/Stubbs/sublime-vagrant), These are awesome package.  
-But, I use direnv, so not working.
+**Warning: Sublime Text 4 and recent enough `direnv` (the version in Ubuntu is too old).**
 
-That is why I made this.
+This package allows your Sublime Text to import environment variables from [`direnv`](https://direnv.net/).
 
-# Instration
+## Installation
 
-## Package Control
-If you have PackageControl installed, you can use it to install the package.
+### Package Control
+If you have [PackageControl](https://packagecontrol.io/) installed, you can use it to install the package.
 
-## Manual
+### Manual
 You can clone the repository in your `/Packages` folder.
 
 ```
-git clone git@github.com:fainder/sublime-direnv.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/sublime-direnv
+git clone git@github.com:zchee/sublime-direnv.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/sublime-direnv
 ```
 
-# Usage
-When there is .envrc file to open project, choose `Direnv allow` from the command pallete.
+## Usage
+When there is `.envrc` file to open project, choose “Load direnv” from the command palette.
 
 
-## .envrc Sample
-Do
+### .envrc example
+You can use any bash code that can be interpreted by `direnv` – set environment variables manually:
 
-```
-export VAGRANT_IP=192.168.33.10
-export THEME_DIR=_theme
-export CSS_DIR=_theme/css
-export JS_DIR=_theme/js
-export SASS_DIR=_theme/sass
-export IMG_DIR=_theme/img
-```
-
-Do not 
-
-```
+```bash
 export VAGRANT_IP=192.168.33.10
 export THEME_DIR=_theme
 export CSS_DIR=$THEME_DIR/css
@@ -44,9 +32,17 @@ export SASS_DIR=$THEME_DIR/sass
 export IMG_DIR=$THEME_DIR/img
 ```
 
-# Todo
-It later to modify it because I wrote for myself!
+or use functions `direnv`’s [standard library](https://github.com/direnv/direnv/blob/master/stdlib.sh):
 
-- [ ] `direnv deny` support.
-- [ ] `direnv reload` support.
-- [ ] Refactoring.
+```bash
+use_nix
+```
+
+This is useful for getting environment variables from [Nix](https://nixos.org/) shell or any other supported toolchain.
+
+## To do
+Some tasks that remain:
+
+- [ ] `direnv allow` and `direnv deny` support.
+- [ ] Avoid running multiple direnv instances.
+- [ ] Handle multiple windows and project directories. How would that even work?

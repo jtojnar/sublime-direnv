@@ -1,6 +1,6 @@
 [
     {
-        "caption": "Direnv allow",
-        "command": "direnv_allow"
+        "caption": "Load direnv",
+        "command": "direnv_load"
     }
 ]
